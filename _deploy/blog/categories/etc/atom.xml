@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: etc | My Octopress Blog]]></title>
+  <link href="http://nekojarashi.github.io/blog/categories/etc/atom.xml" rel="self"/>
+  <link href="http://nekojarashi.github.io/"/>
+  <updated>2013-08-03T18:00:37+09:00</updated>
+  <id>http://nekojarashi.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tywin Lannister Quote]]></title>
+    <link href="http://nekojarashi.github.io/blog/2013/06/15/tywin-lannister-quote/"/>
+    <updated>2013-06-15T09:28:00+09:00</updated>
+    <id>http://nekojarashi.github.io/blog/2013/06/15/tywin-lannister-quote</id>
+    <content type="html"><![CDATA[<p>A nice quote by Tywin Lannister taken from <em>A Storm of Sword</em> book.</p>
+
+<p><blockquote><p>The greatest fools are ofttimes more clever then the men who laugh at them.</p><footer><strong>Tywin Lannister</strong> <cite>A Storm of Swords</cite></footer></blockquote></p>
+]]></content>
+  </entry>
+  
+</feed>
