@@ -1,14 +1,15 @@
 $blockquote: $type-border !default;
-$sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
-$serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
-$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-$heading-font-family: "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
-$header-title-font-family: $heading-font-family !default;
-$header-subtitle-font-family: $heading-font-family !default;
 
 // Fonts
+$sans: "Cabin","Helvetica Neue", Arial, sans-serif !default;
+$serif: "Vollkorn", Georgia, Times, "Times New Roman", serif !default;
+$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+$heading-font-family: "Fjalla One", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
+$header-title-font-family: $heading-font-family !default;
+$header-subtitle-font-family: $serif !default;
+
 .heading {
-  font-family: $heading-font-family;
+  font-family: $sans;
 }
 .sans { font-family: $sans; }
 .serif { font-family: $serif; }
@@ -16,14 +17,14 @@ $header-subtitle-font-family: $heading-font-family !default;
 
 body > header h1 {
   font-size: 2.2em;
-  @extend .heading;
+  @extend .serif;
   font-family: $header-title-font-family;
   font-weight: normal;
   line-height: 1.2em;
   margin-bottom: 0.6667em;
 }
 body > header h2 {
-  font-family: $header-subtitle-font-family;
+  font-family: $serif;
 }
 
 body {
@@ -34,6 +35,7 @@ body {
 h1 {
   font-size: 2.2em;
   line-height: 1.2em;
+  @extend .serif;
 }
 
 @media only screen and (min-width: 992px) {
@@ -42,7 +44,7 @@ h1 {
 }
 
 #{headings()}{
-  @extend .heading;
+  @extend .serif;
   text-rendering: optimizelegibility;
   margin-bottom: 1em;
   font-weight: bold;
@@ -63,7 +65,10 @@ h6, section h5, section section h4, section section section h3 {
   font-size: .8em;
 }
 
-p, article blockquote, ul, ol { margin-bottom: 1.5em; }
+p, article blockquote, ul, ol {
+  margin-bottom: 1.5em;
+  @extend .serif;
+  }
 
 ul { list-style-type: disc;
   ul { list-style-type: circle; margin-bottom: 0px;
@@ -80,11 +85,9 @@ strong { font-weight: bold; }
 
 em { font-style: italic; }
 
-sup, sub { font-size: 0.75em; position: relative;  display: inline-block; padding: 0 .2em; line-height: .8em;}
+sup, sub { font-size: 0.8em; position: relative;  display: inline-block; }
 sup { top: -.5em; }
 sub { bottom: -.5em; }
-
-a[rev='footnote']{ font-size: .75em; padding: 0 .3em; line-height: 1; }
 
 q { font-style: italic;
   &:before { content: "\201C"; }
@@ -93,13 +96,18 @@ q { font-style: italic;
 
 em, dfn { font-style: italic; }
 
-strong, dfn { font-weight: bold; }
+strong, dfn {
+  font-weight: bold;
+  @extend .serif;
+}
 
 del, s { text-decoration: line-through; }
 
 abbr, acronym { border-bottom: 1px dotted; cursor: help; }
 
 pre, code, tt { @extend .mono; }
+
+sub, sup { line-height: 0; }
 
 hr { margin-bottom: 0.2em; }
 
@@ -116,6 +124,7 @@ article blockquote {
   padding-left: 1em;
   border-left: 4px solid rgba($text-color-light, .5);
   cite {
+    @extend .serif;
     font-style: italic;
     a { color: $text-color-light !important; word-wrap: break-word; }
     &:before { content: '\2014'; padding:{right: .3em; left: .3em;} color: $text-color-light; }
@@ -162,3 +171,9 @@ article blockquote {
   word-wrap: break-word;
 }
 
+article {
+  @extend .serif;
+  font-size: 1em;
+  line-height: 1.7em;
+  text-align: left;
+}
