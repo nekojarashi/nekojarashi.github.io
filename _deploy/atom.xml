@@ -2,26 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[CoreDrive開発者ブログ]]></title>
-  <link href="http://nekojarashi.github.io/atom.xml" rel="self"/>
-  <link href="http://nekojarashi.github.io/"/>
-  <updated>2013-08-03T18:54:11+09:00</updated>
-  <id>http://nekojarashi.github.io/</id>
+  <link href="http://blog.coredrive.com/atom.xml" rel="self"/>
+  <link href="http://blog.coredrive.com/"/>
+  <updated>2013-08-03T20:09:52+09:00</updated>
+  <id>http://blog.coredrive.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Nekojarashi Inc.]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[Tywin Lannister Quote]]></title>
-    <link href="http://nekojarashi.github.io/blog/2013/06/15/tywin-lannister-quote/"/>
-    <updated>2013-06-15T09:28:00+09:00</updated>
-    <id>http://nekojarashi.github.io/blog/2013/06/15/tywin-lannister-quote</id>
-    <content type="html"><![CDATA[<p>A nice quote by Tywin Lannister taken from <em>A Storm of Sword</em> book.</p>
-
-<blockquote><p>The greatest fools are ofttimes more clever then the men who laugh at them.</p><footer><strong>Tywin Lannister</strong> <cite>A Storm of Swords</cite></footer></blockquote>
-
+    <title type="html"><![CDATA[ブログ始めました]]></title>
+    <link href="http://blog.coredrive.com/blog/2013/08/03/burogushi-memasita/"/>
+    <updated>2013-08-03T19:04:00+09:00</updated>
+    <id>http://blog.coredrive.com/blog/2013/08/03/burogushi-memasita</id>
+    <content type="html"><![CDATA[<p>こんにちわ。CoreDrive開発チームの川村です。<br/>
+開発を通して得たTipsやノウハウを記していこうと思います。</p>
 ]]></content>
   </entry>
   
