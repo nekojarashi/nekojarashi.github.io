@@ -6,7 +6,7 @@ comments: true
 categories: Test
 author: 川村
 ---
-こんにちわ。CoreDrive開発チームの川村です。  
+こんにちは。CoreDrive開発チームの川村です。  
 これから開発を通して得たTipsやノウハウを記していこうと思います。
 
 https://coredrive.com/

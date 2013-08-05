@@ -4,7 +4,7 @@
   <title><![CDATA[CoreDrive開発チームブログ]]></title>
   <link href="http://blog.coredrive.com/atom.xml" rel="self"/>
   <link href="http://blog.coredrive.com/"/>
-  <updated>2013-08-03T20:29:04+09:00</updated>
+  <updated>2013-08-05T12:46:52+09:00</updated>
   <id>http://blog.coredrive.com/</id>
   <author>
     <name><![CDATA[Nekojarashi Inc.]]></name>
@@ -14,20 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[SPDY]]></title>
-    <link href="http://blog.coredrive.com/blog/2013/08/03/spdy/"/>
-    <updated>2013-08-03T20:25:00+09:00</updated>
-    <id>http://blog.coredrive.com/blog/2013/08/03/spdy</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[ブログ始めました]]></title>
-    <link href="http://blog.coredrive.com/blog/2013/08/03/burogushi-memasita/"/>
+    <link href="http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita/"/>
     <updated>2013-08-03T19:04:00+09:00</updated>
-    <id>http://blog.coredrive.com/blog/2013/08/03/burogushi-memasita</id>
-    <content type="html"><![CDATA[<p>こんにちわ。CoreDrive開発チームの川村です。<br/>
+    <id>http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita</id>
+    <content type="html"><![CDATA[<p>こんにちは。CoreDrive開発チームの川村です。<br/>
 これから開発を通して得たTipsやノウハウを記していこうと思います。</p>
 
 <p><a href="https://coredrive.com/">https://coredrive.com/</a></p>
