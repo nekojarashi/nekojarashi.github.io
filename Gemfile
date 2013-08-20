@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 source "https://rubygems.org"
 
 group :development do
@@ -17,3 +18,8 @@ group :development do
 end
 
 gem 'sinatra', '~> 1.4.2'
+
+group :development do
+  gem 'guard'
+  gem 'guard-livereload'
+end
