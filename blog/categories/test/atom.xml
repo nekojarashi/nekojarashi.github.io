@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Test | CoreDrive開発チームブログ]]></title>
   <link href="http://blog.coredrive.com/blog/categories/test/atom.xml" rel="self"/>
   <link href="http://blog.coredrive.com/"/>
-  <updated>2013-08-05T12:46:52+09:00</updated>
+  <updated>2013-09-05T19:06:03+09:00</updated>
   <id>http://blog.coredrive.com/</id>
   <author>
     <name><![CDATA[Nekojarashi Inc.]]></name>
@@ -18,8 +18,8 @@
     <link href="http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita/"/>
     <updated>2013-08-03T19:04:00+09:00</updated>
     <id>http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita</id>
-    <content type="html"><![CDATA[<p>こんにちは。CoreDrive開発チームの川村です。<br/>
-これから開発を通して得たTipsやノウハウを記していこうと思います。</p>
+    <content type="html"><![CDATA[<p>こんにちは。CoreDrive開発チームの川村です。
+これからCoreDriveの開発を通して得たTipsやノウハウ、開発チームの日常を記していこうと思います。</p>
 
 <p><a href="https://coredrive.com/">https://coredrive.com/</a></p>
 ]]></content>
