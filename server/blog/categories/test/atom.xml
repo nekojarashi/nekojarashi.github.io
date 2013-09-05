@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Test | CoreDrive開発チームブログ]]></title>
+  <link href="http://blog.coredrive.com/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://blog.coredrive.com/"/>
+  <updated>2013-08-20T11:25:55+09:00</updated>
+  <id>http://blog.coredrive.com/</id>
+  <author>
+    <name><![CDATA[Nekojarashi Inc.]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ブログ始めました]]></title>
+    <link href="http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita/"/>
+    <updated>2013-08-03T19:04:00+09:00</updated>
+    <id>http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita</id>
+    <content type="html"><![CDATA[<p>こんにちは。CoreDrive開発チームの川村です。<br/>
+これから開発を通して得たTipsやノウハウを記していこうと思います。</p>
+
+<p><a href="https://coredrive.com/">https://coredrive.com/</a></p>
+]]></content>
+  </entry>
+  
+</feed>
