@@ -9,9 +9,14 @@
   <meta name="author" content="Nekojarashi Inc.">
 
   
+<<<<<<< HEAD
   <meta name="description" content="こんにちは。CoreDrive開発チームの川村です。
 これからCoreDriveの開発を通して得たTipsやノウハウ、開発チームの日常を記していこうと思います。 https://coredrive.com/
 ">
+=======
+  <meta name="description" content="CoreDrive開発チームの原です。 今回、論理削除されたレコードをデフォルトで取得しない acts_as_paranoid を導入しました。まずは一般的な使い方から。 1.Gem を追加 1
+gem &quot;acts_as_paranoid&quot;, &quot;~&gt;0.4.0& &hellip;">
+>>>>>>> 3b8f6c7fc3468b575f183e2d8b80c839da910ff6
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -52,6 +57,224 @@
   <div id="main">
     <div id="content">
       
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/20/acts-as-paranoid/">Acts_as_paranoid</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-20T11:19:00+09:00" pubdate data-updated="true">2013年08月20日 11:19</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>CoreDrive開発チームの原です。</p>
+
+<p>今回、論理削除されたレコードをデフォルトで取得しない <code>acts_as_paranoid</code> を導入しました。まずは一般的な使い方から。</p>
+
+<p><strong> 1.Gem を追加 </strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s2">&quot;acts_as_paranoid&quot;</span><span class="p">,</span> <span class="s2">&quot;~&gt;0.4.0&quot;</span> <span class="c1"># Rails 3.2 の場合</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong> 2.Gem をインストール </strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">bundle</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong> 3.論理削除するテーブルに <code>deleted_at</code> カラム（datetime型）を追加し、マイグレーションを実行する。 </strong></p>
+
+<p>例：Postモデルに追加する場合</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="n">generate</span> <span class="n">migration</span> <span class="no">AddDeletedAtToPosts</span> <span class="n">deleted_at</span><span class="ss">:datetime</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong> 4.対応するモデルに acts_as_paranoid を宣言する </strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">acts_as_paranoid</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong> 5.この時点で、クエリのSQLにデフォルトで <code>deleted_at is NULL</code>が自動的に挿入される。コンソールを立ち上げて、Post.all を実行してSQLを確認してみる。 </strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="no">Post</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>  <span class="err">⇒</span>  <span class="no">SELECT</span> <span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="n">*</span> <span class="no">FROM</span> <span class="s2">&quot;posts&quot;</span> <span class="no">WHERE</span> <span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="s2">&quot;deleted_at&quot;</span> <span class="no">IS</span> <span class="no">NULL</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong> 6.destroy を呼ぶと、レコードは削除されずに <code>deleted_at</code> に値が設定される。 </strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">post</span><span class="o">.</span><span class="n">destroy</span>
+</span><span class='line'>  <span class="err">⇒</span>  <span class="no">UPDATE</span> <span class="s2">&quot;posts&quot;</span> <span class="no">SET</span> <span class="n">deleted_at</span> <span class="o">=</span> <span class="s1">&#39;2013-08-20 03:47:01.506771&#39;</span> <span class="no">WHERE</span> <span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="s2">&quot;id&quot;</span> <span class="o">=</span> <span class="mi">1</span> <span class="no">AND</span> <span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="s2">&quot;deleted_at&quot;</span> <span class="no">IS</span> <span class="no">NULL</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>各種メソッド</h2>
+
+<ul>
+<li><p>only_deleted<br>
+deleted_at が入っているレコードを検索する。</p></li>
+<li><p>with_deleted / unscoped<br>
+すべてのレコードを検索する。</p></li>
+<li><p>destroy! / delete_all!(conditions)<br>
+レコードを削除する。</p></li>
+</ul>
+
+
+<h2>オプション</h2>
+
+<ul>
+<li>:column <br>
+deleted_at 以外のカラムを論理削除の対象とする場合に使用する。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">acts_as_paranoid</span> <span class="ss">:column</span> <span class="o">=&gt;</span> <span class="s1">&#39;カラム名&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>関連付けされたモデルの場合</h2>
+
+<p>今回はこれにちょっとはまりました。GitHubに書いてある通りに記述しても正しく動いてくれなくて。とりあえず、以下の場合を想定します。</p>
+
+<p>・PostモデルにCommentモデルが関連づけられている。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:comments</span>
+</span><span class='line'>  <span class="n">acts_as_paranoid</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Comment</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:post</span>
+</span><span class='line'>  <span class="n">acts_as_paranoid</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このままPostのインスタンスに紐づくCommentを取得しようとすると、deleted_at が入っていないCommentを取得しようとします。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">post</span><span class="o">.</span><span class="n">comments</span>
+</span><span class='line'>  <span class="err">⇒</span>  <span class="no">SELECT</span> <span class="s2">&quot;comments&quot;</span><span class="o">.</span><span class="n">*</span> <span class="no">FROM</span> <span class="s2">&quot;comments&quot;</span> <span class="no">WHERE</span> <span class="s2">&quot;comments&quot;</span><span class="o">.</span><span class="s2">&quot;post_id&quot;</span> <span class="o">=</span> <span class="mi">2</span> <span class="no">AND</span> <span class="p">(</span><span class="s2">&quot;comments&quot;</span><span class="o">.</span><span class="s2">&quot;deleted_at&quot;</span> <span class="no">IS</span> <span class="no">NULL</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Post に紐づく Comment で、<code>deleted_at</code> が付いているレコードを取得するには、上記の各種メソッドで紹介した <code>with_deleted</code> または <code>unscoped</code> を使用します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">post</span><span class="o">.</span><span class="n">comments</span><span class="o">.</span><span class="n">with_deleted</span>
+</span><span class='line'>  <span class="err">⇒</span>  <span class="no">SELECT</span> <span class="s2">&quot;comments&quot;</span><span class="o">.</span><span class="n">*</span> <span class="no">FROM</span> <span class="s2">&quot;comments&quot;</span> <span class="no">WHERE</span> <span class="s2">&quot;comments&quot;</span><span class="o">.</span><span class="s2">&quot;post_id&quot;</span> <span class="o">=</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>さて、上記の各種メソッドは、<code>post.comments</code> のような配列のクラスには使えますが、<code>comment.post</code>のような場合に使うことができません。<code>comment.post</code> で <code>deleted_at</code> が入った Post を取得したい場合は、CommentモデルにPostモデルとの関連を違う名前で追加します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Comment</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:post</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:post_including_deleted</span><span class="p">,</span> <span class="ss">:class_name</span> <span class="o">=&gt;</span> <span class="s2">&quot;Post&quot;</span><span class="p">,</span> <span class="ss">:with_deleted</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:foreign_key</span> <span class="o">=&gt;</span> <span class="ss">:post_id</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">acts_as_paranoid</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※ 関連名に *_with_deleted は使えないようです。</p>
+
+<p>:foreign_key を指定しないと結果が全部 nil になって返ってきます。この部分が GitHub のサンプルコードになかったので原因を探すのに手間取りました。</p>
+
+<p>それでは、追加したメソッドでCommentを取得してみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">comment</span> <span class="o">=</span> <span class="no">Comment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">comment</span><span class="o">.</span><span class="n">post_including_deleted</span>
+</span><span class='line'>  <span class="err">⇒</span>  <span class="no">SELECT</span> <span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="n">*</span> <span class="no">FROM</span> <span class="s2">&quot;posts&quot;</span> <span class="no">WHERE</span> <span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="s2">&quot;id&quot;</span> <span class="o">=</span> <span class="mi">1</span> <span class="no">LIMIT</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで <code>deleted_ at</code> が入ったPostを取得することができました。</p>
+</div>
+  
+  
+
+</article>
 
 
     <article class="post">
