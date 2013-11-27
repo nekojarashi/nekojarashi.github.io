@@ -1,0 +1,9 @@
+<div class="highlight"><pre><span class="nv">UserView = </span><span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
+  <span class="nv">template: </span><span class="nx">$</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">user-template&quot;</span><span class="p">)</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nv">compiledTemplate = </span><span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">@template</span><span class="p">.</span><span class="nx">html</span><span class="p">())</span>
+    <span class="nv">user = </span><span class="nx">@model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()</span>
+    <span class="nv">html = </span><span class="nx">compiledTemplate</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+    <span class="nx">@$el</span><span class="p">.</span><span class="nx">html</span> <span class="nx">html</span>
+<span class="p">)</span>
+</pre></div>

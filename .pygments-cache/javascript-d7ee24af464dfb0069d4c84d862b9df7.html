@@ -1,0 +1,10 @@
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">UserView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">template</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#user-template&#39;</span><span class="p">);</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">compiledTemplate</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">html</span><span class="p">());</span>
+    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">();</span>
+    <span class="nx">ver</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">compiledTemplate</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>

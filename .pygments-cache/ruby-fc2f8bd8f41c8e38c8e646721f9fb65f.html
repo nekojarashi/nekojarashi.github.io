@@ -1,0 +1,8 @@
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Comment</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:post</span>
+  <span class="n">belongs_to</span> <span class="ss">:post_including_deleted</span><span class="p">,</span> <span class="ss">:class_name</span> <span class="o">=&gt;</span> <span class="s2">&quot;Post&quot;</span><span class="p">,</span> <span class="ss">:with_deleted</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:foreign_key</span> <span class="o">=&gt;</span> <span class="ss">:post_id</span>
+
+  <span class="n">acts_as_paranoid</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</pre></div>

@@ -1,0 +1,4 @@
+<div class="highlight"><pre>  <span class="n">comment</span> <span class="o">=</span> <span class="no">Comment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">comment</span><span class="o">.</span><span class="n">post_including_deleted</span>
+  <span class="err">⇒</span>  <span class="no">SELECT</span> <span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="n">*</span> <span class="no">FROM</span> <span class="s2">&quot;posts&quot;</span> <span class="no">WHERE</span> <span class="s2">&quot;posts&quot;</span><span class="o">.</span><span class="s2">&quot;id&quot;</span> <span class="o">=</span> <span class="mi">1</span> <span class="no">LIMIT</span> <span class="mi">1</span>
+</pre></div>
