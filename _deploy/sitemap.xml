@@ -2,46 +2,34 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita/</loc>
-<<<<<<< HEAD
-        <lastmod>2013-09-05T19:04:56+09:00</lastmod>
-=======
-        <lastmod>2013-08-20T10:38:28+09:00</lastmod>
+        <lastmod>2013-11-27T14:52:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.coredrive.com/blog/2013/08/20/acts-as-paranoid/</loc>
-        <lastmod>2013-08-20T16:13:39+09:00</lastmod>
->>>>>>> 3b8f6c7fc3468b575f183e2d8b80c839da910ff6
+        <lastmod>2013-11-27T14:18:16+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.coredrive.com/blog/2013/11/27/marionette-dot-js/</loc>
+        <lastmod>2013-11-27T14:49:52+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.coredrive.com/404.html</loc>
-        <lastmod>2013-08-20T10:38:28+09:00</lastmod>
+        <lastmod>2013-11-27T14:18:16+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.coredrive.com/blog/archives/</loc>
-<<<<<<< HEAD
-        <lastmod>2013-09-05T19:04:56+09:00</lastmod>
+        <lastmod>2013-11-27T14:52:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.coredrive.com/blog/</loc>
-        <lastmod>2013-09-05T19:04:56+09:00</lastmod>
+        <lastmod>2013-11-27T14:52:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.coredrive.com/</loc>
-        <lastmod>2013-09-05T19:04:56+09:00</lastmod>
-=======
-        <lastmod>2013-08-20T16:13:39+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.coredrive.com/blog/</loc>
-        <lastmod>2013-08-20T16:13:39+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.coredrive.com/</loc>
-        <lastmod>2013-08-20T16:13:39+09:00</lastmod>
->>>>>>> 3b8f6c7fc3468b575f183e2d8b80c839da910ff6
+        <lastmod>2013-11-27T14:52:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://blog.coredrive.com/robots.txt</loc>
-        <lastmod>2013-08-20T10:38:28+09:00</lastmod>
+        <lastmod>2013-11-27T14:18:16+09:00</lastmod>
     </url>
 </urlset>
