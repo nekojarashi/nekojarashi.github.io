@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[CoreDrive開発チームブログ]]></title>
-  <link href="http://blog.coredrive.com/atom.xml" rel="self"/>
-  <link href="http://blog.coredrive.com/"/>
-  <updated>2013-09-05T19:14:39+09:00</updated>
-  <id>http://blog.coredrive.com/</id>
+  <title><![CDATA[ねこじゃらし開発部ブログ]]></title>
+  <link href="http://nekojarashi.github.io/atom.xml" rel="self"/>
+  <link href="http://nekojarashi.github.io/"/>
+  <updated>2014-01-09T18:18:44+09:00</updated>
+  <id>http://nekojarashi.github.io/</id>
   <author>
     <name><![CDATA[Nekojarashi Inc.]]></name>
     
@@ -14,10 +14,105 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Backbone.Marionette]]></title>
+    <link href="http://nekojarashi.github.io/blog/2013/11/27/marionette-dot-js/"/>
+    <updated>2013-11-27T11:20:00+09:00</updated>
+    <id>http://nekojarashi.github.io/blog/2013/11/27/marionette-dot-js</id>
+    <content type="html"><![CDATA[<p><a href="http://marionettejs.com/">Backbone.Marionette</a>は Backbone.js用のライブラリです。
+Backboneはその名の通りアプリケーションの背骨にあたる部分しか提供しません。
+これによって開発者はBackboneの土台の上に自由にアプリを設計できるのですが、典型的なWebアプリ開発では多くの部分で同じようなコードを使いまわすケースが多く、規模が大きくなるとDRYに保つためにそれぞれをまとめる必要がでてきます。
+Marionetteはこうした&#8221;Boilerplate&#8221;なコードの雛形を提供しますので、開発のスピードアップやコードの共通化に役立てることができます。</p>
+
+<p><strong> Backbone.Marionette.ItemView </strong></p>
+
+<p><code>ItemView</code>はBackbone.Viewの拡張です。Backbone.ViewがマリオだとしたらBackbone.Marionette.ItemViewはファイヤーマリオです。いくつかの典型的なプロセスをよしなにやってくれているのでコード量を減らすことができます。そのいくつかのプロセスとは、ざっくり言うと下記の3つです。</p>
+
+<ul>
+<li>テンプレートエンジンにモデルを埋め込んでDOMを構築する</li>
+<li>構築したDOMを表示する</li>
+<li>使われなくなったらゾンビ化しないようにしてくれる</li>
+</ul>
+
+
+<p>Backboneに限らず、そもそも「ビュー」というものが提供する典型的な役割とは、「モデル」という概念的なデータを現実世界に表現することです。（シャレではありませんが）ファッションでいうといろんなモデルさんに服を着せ、髪型をととのえ、ステージにたたせるスタイリストさんのような感じでしょうか。Backboneでの具体的なプロセスでいうと、「扱うモデルを決めてそのイベントを購読」し、「テンプレートエンジンにモデルのデータを埋め込み」、最後に「それを表示する」ということになります。<code>ItemView</code>は、この一連の流れがあらかじめ定義されていますので、開発者がすることはただ<code>ItemView</code>を作るだけになります。…これは具体例を見たほうがはやそうですね。つまり、</p>
+
+<p>こんな感じのが</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">UserView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">template</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#user-template&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">compiledTemplate</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">html</span><span class="p">());</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">();</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">compiledTemplate</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こうなります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">UserView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Marionette</span><span class="p">.</span><span class="nx">ItemView</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;#user-template&#39;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>CoffeeScriptだとこんな感じかな</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">UserView = </span><span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
+</span><span class='line'>  <span class="nv">template: </span><span class="nx">$</span><span class="p">(</span><span class="s">&#39;#user-template&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">render: </span><span class="nf">-&gt;</span>
+</span><span class='line'>    <span class="nv">compiledTemplate = </span><span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">@template</span><span class="p">.</span><span class="nx">html</span><span class="p">())</span>
+</span><span class='line'>    <span class="nv">user = </span><span class="nx">@model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()</span>
+</span><span class='line'>    <span class="nv">html = </span><span class="nx">compiledTemplate</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">@$el</span><span class="p">.</span><span class="nx">html</span> <span class="nx">html</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>↓</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">UserView = </span><span class="nx">Backbone</span><span class="p">.</span><span class="nx">Marionette</span><span class="p">.</span><span class="nx">ItemView</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nv">template: </span><span class="s">&#39;#user-template&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>うーんなかなかスッキリしたんじゃないでしょうか。</p>
+
+<p><strong> Backbone.Marionette.Region </strong></p>
+
+<p><strong> Backbone.Marionette.Layout </strong></p>
+
+<p><code>Layout</code>は<code>ItemView</code>に<code>Region</code>管理機能がついたものです。以上。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[acts_as_paranoid]]></title>
-    <link href="http://blog.coredrive.com/blog/2013/08/20/acts-as-paranoid/"/>
+    <link href="http://nekojarashi.github.io/blog/2013/08/20/acts-as-paranoid/"/>
     <updated>2013-08-20T11:19:00+09:00</updated>
-    <id>http://blog.coredrive.com/blog/2013/08/20/acts-as-paranoid</id>
+    <id>http://nekojarashi.github.io/blog/2013/08/20/acts-as-paranoid</id>
     <content type="html"><![CDATA[<p>CoreDrive開発チームの原です。</p>
 
 <p>今回、論理削除されたレコードをデフォルトで取得しない <code>acts_as_paranoid</code> を導入しました。まずは一般的な使い方から。</p>
@@ -208,11 +303,11 @@ deleted_at 以外のカラムを論理削除の対象とする場合に使用す
   
   <entry>
     <title type="html"><![CDATA[ブログ始めました]]></title>
-    <link href="http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita/"/>
+    <link href="http://nekojarashi.github.io/blog/2013/08/03/blog-hajimemasita/"/>
     <updated>2013-08-03T19:04:00+09:00</updated>
-    <id>http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita</id>
-    <content type="html"><![CDATA[<p>こんにちは。CoreDrive開発チームの川村です。
-これからCoreDriveの開発を通して得たTipsやノウハウ、開発チームの日常を記していこうと思います。</p>
+    <id>http://nekojarashi.github.io/blog/2013/08/03/blog-hajimemasita</id>
+    <content type="html"><![CDATA[<p>こんにちは。ねこじゃらし開発部の川村です。
+これから開発を通して得たTipsやノウハウ、開発チームの日常を記していこうと思います。</p>
 
 <p><a href="https://coredrive.com/">https://coredrive.com/</a></p>
 ]]></content>
