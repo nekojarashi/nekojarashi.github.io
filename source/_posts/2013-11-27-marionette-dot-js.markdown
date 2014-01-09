@@ -58,4 +58,12 @@ UserView = Backbone.Marionette.ItemView.extend(template: '#user-template')
 ```
 うーんなかなかスッキリしたんじゃないでしょうか。
 
+** Backbone.Marionette.Region **
+
+
+
+** Backbone.Marionette.Layout **
+
+`Layout`は`ItemView`に`Region`管理機能がついたものです。以上。
+
 

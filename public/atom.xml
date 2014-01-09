@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[ねこじゃらし開発部ブログ]]></title>
-  <link href="http://blog.coredrive.com/atom.xml" rel="self"/>
-  <link href="http://blog.coredrive.com/"/>
-  <updated>2013-11-27T18:50:49+09:00</updated>
-  <id>http://blog.coredrive.com/</id>
+  <link href="http://nekojarashi.github.io/atom.xml" rel="self"/>
+  <link href="http://nekojarashi.github.io/"/>
+  <updated>2014-01-09T18:10:11+09:00</updated>
+  <id>http://nekojarashi.github.io/</id>
   <author>
     <name><![CDATA[Nekojarashi Inc.]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Backbone.Marionette]]></title>
-    <link href="http://blog.coredrive.com/blog/2013/11/27/marionette-dot-js/"/>
+    <link href="http://nekojarashi.github.io/blog/2013/11/27/marionette-dot-js/"/>
     <updated>2013-11-27T11:20:00+09:00</updated>
-    <id>http://blog.coredrive.com/blog/2013/11/27/marionette-dot-js</id>
+    <id>http://nekojarashi.github.io/blog/2013/11/27/marionette-dot-js</id>
     <content type="html"><![CDATA[<p><a href="http://marionettejs.com/">Backbone.Marionette</a>は Backbone.js用のライブラリです。
 Backboneはその名の通りアプリケーションの背骨にあたる部分しか提供しません。
 これによって開発者はBackboneの土台の上に自由にアプリを設計できるのですが、典型的なWebアプリ開発では多くの部分で同じようなコードを使いまわすケースが多く、規模が大きくなるとDRYに保つためにそれぞれをまとめる必要がでてきます。
@@ -99,14 +99,20 @@ Marionetteはこうした&#8221;Boilerplate&#8221;なコードの雛形を提供
 
 
 <p>うーんなかなかスッキリしたんじゃないでしょうか。</p>
+
+<p><strong> Backbone.Marionette.Region </strong></p>
+
+<p><strong> Backbone.Marionette.Layout </strong></p>
+
+<p><code>Layout</code>は<code>ItemView</code>に<code>Region</code>管理機能がついたものです。以上。</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[acts_as_paranoid]]></title>
-    <link href="http://blog.coredrive.com/blog/2013/08/20/acts-as-paranoid/"/>
+    <link href="http://nekojarashi.github.io/blog/2013/08/20/acts-as-paranoid/"/>
     <updated>2013-08-20T11:19:00+09:00</updated>
-    <id>http://blog.coredrive.com/blog/2013/08/20/acts-as-paranoid</id>
+    <id>http://nekojarashi.github.io/blog/2013/08/20/acts-as-paranoid</id>
     <content type="html"><![CDATA[<p>CoreDrive開発チームの原です。</p>
 
 <p>今回、論理削除されたレコードをデフォルトで取得しない <code>acts_as_paranoid</code> を導入しました。まずは一般的な使い方から。</p>
@@ -297,9 +303,9 @@ deleted_at 以外のカラムを論理削除の対象とする場合に使用す
   
   <entry>
     <title type="html"><![CDATA[ブログ始めました]]></title>
-    <link href="http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita/"/>
+    <link href="http://nekojarashi.github.io/blog/2013/08/03/blog-hajimemasita/"/>
     <updated>2013-08-03T19:04:00+09:00</updated>
-    <id>http://blog.coredrive.com/blog/2013/08/03/blog-hajimemasita</id>
+    <id>http://nekojarashi.github.io/blog/2013/08/03/blog-hajimemasita</id>
     <content type="html"><![CDATA[<p>こんにちは。ねこじゃらし開発部の川村です。
 これから開発を通して得たTipsやノウハウ、開発チームの日常を記していこうと思います。</p>
 
